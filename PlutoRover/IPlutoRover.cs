@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PlutoRover.Models;
 
 namespace PlutoRover
 {
     public interface IPlutoRover
     {
-        Tuple<int, int, char> CurrentLocation { get; set; }
+        RoverLocation CurrentLocation { get; set; }
         void Move(char[] moveCommands);
         void MoveOnce(char moveCommand);
     }

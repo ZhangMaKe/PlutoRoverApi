@@ -191,6 +191,7 @@
     </Compile>
     <Compile Include="IPlutoRover.cs" />
     <Compile Include="Models\PlutoRover.cs" />
+    <Compile Include="Models\RoverLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

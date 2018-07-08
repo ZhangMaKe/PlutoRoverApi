@@ -9,7 +9,7 @@ namespace PlutoRover.Controllers
 {
     public class PlutoRoverController : ApiController
     {
-        IPlutoRover _plutoRover;
+        readonly IPlutoRover _plutoRover;
         public PlutoRoverController(IPlutoRover plutoRover)
         {
             _plutoRover = plutoRover;
@@ -17,7 +17,7 @@ namespace PlutoRover.Controllers
         //POST api/plutorover
         public void MoveRover([FromBody]char[] moveCommands)
         {
-            
+            _plutoRover.Move(moveCommands);
         }
     }
 }

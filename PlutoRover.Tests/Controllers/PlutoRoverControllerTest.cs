@@ -28,8 +28,10 @@ namespace PlutoRover.Tests.Controllers
 
             //Assert
 
-            var expectedPosition = new Tuple<int, int, char>(0, 1, 'N');
-            Assert.AreEqual(expectedPosition, rover.CurrentLocation);
+            var expectedPosition = new RoverLocation(0, 1, 'N');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
         }
 
         [TestMethod]
@@ -49,8 +51,10 @@ namespace PlutoRover.Tests.Controllers
 
             //Assert
 
-            var expectedPosition = new Tuple<int, int, char>(0, -1, 'N');
-            Assert.AreEqual(expectedPosition, rover.CurrentLocation);
+            var expectedPosition = new RoverLocation(0, -1, 'N');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
 
         }
 
@@ -68,8 +72,10 @@ namespace PlutoRover.Tests.Controllers
             roverController.MoveRover(moveCommands);
 
             //Assert
-            var expectedPosition = new Tuple<int, int, char>(0, 2, 'N');
-            Assert.AreEqual(expectedPosition, rover.CurrentLocation);
+            var expectedPosition = new RoverLocation(0, 2, 'N');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
         }
 
         [TestMethod]
@@ -87,8 +93,10 @@ namespace PlutoRover.Tests.Controllers
             roverController.MoveRover(moveCommands);
 
             //Assert
-            var expectedPosition = new Tuple<int, int, char>(0, 1, 'E');
-            Assert.AreEqual(expectedPosition, rover.CurrentLocation);
+            var expectedPosition = new RoverLocation(0, 1, 'E');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
         }
 
         [TestMethod]
@@ -106,8 +114,10 @@ namespace PlutoRover.Tests.Controllers
             roverController.MoveRover(moveCommands);
 
             //Assert
-            var expectedPosition = new Tuple<int, int, char>(1, 0, 'E');
-            Assert.AreEqual(expectedPosition, rover.CurrentLocation);
+            var expectedPosition = new RoverLocation(1, 0, 'E');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
 
         }
 
@@ -125,8 +135,10 @@ namespace PlutoRover.Tests.Controllers
             roverController.MoveRover(moveCommands);
 
             //Assert
-            var expectedPosition = new Tuple<int, int, char>(1, -1, 'W');
-            Assert.AreEqual(expectedPosition, rover.CurrentLocation);
+            var expectedPosition = new RoverLocation(1, -1, 'W');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
         }
 
         [TestMethod]
@@ -143,8 +155,10 @@ namespace PlutoRover.Tests.Controllers
             roverController.MoveRover(moveCommands);
 
             //Assert
-            var expectedPosition = new Tuple<int, int, char>(1, -1, 'W');
-            Assert.AreEqual(expectedPosition, rover.CurrentLocation);
+            var expectedPosition = new RoverLocation(0, -1, 'N');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
         }
 
 
