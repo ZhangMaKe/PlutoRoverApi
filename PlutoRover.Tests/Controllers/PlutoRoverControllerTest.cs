@@ -135,14 +135,14 @@ namespace PlutoRover.Tests.Controllers
             roverController.MoveRover(moveCommands);
 
             //Assert
-            var expectedPosition = new RoverLocation(1, -1, 'W');
+            var expectedPosition = new RoverLocation(-1, 1, 'W');
             Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
             Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
             Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
         }
 
         [TestMethod]
-        public void MultipleMovesAndMultipleTurns_LocationAfterMoveIs0Minus1N()
+        public void MultipleMovesAndMultipleTurns_LocationAfterMoveIsMinus10N()
         {
             //Arrange
             var rover = new Models.PlutoRover();
@@ -155,7 +155,7 @@ namespace PlutoRover.Tests.Controllers
             roverController.MoveRover(moveCommands);
 
             //Assert
-            var expectedPosition = new RoverLocation(0, -1, 'N');
+            var expectedPosition = new RoverLocation(-1, 0, 'N');
             Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
             Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
             Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
