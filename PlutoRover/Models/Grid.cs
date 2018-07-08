@@ -10,6 +10,6 @@ namespace PlutoRover.Models
         public static int Height { get; set; } = 100;
         public static int Width { get; set; } = 100;
 
-        public static List<Obstacle> Obstacles { get; set; }
+        public static List<ObstacleLocation> ObstacleLocations { get; set; } = new List<ObstacleLocation>();
     }
 }

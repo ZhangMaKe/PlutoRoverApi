@@ -267,11 +267,11 @@ namespace PlutoRover.Tests.Controllers
 
             var roverController = new PlutoRoverController(rover);
 
-            var obstacle = new Obstacle(new Tuple<int, int>(3, 0));
+            var obstacle = new ObstacleLocation(3, 0);
 
             var moveCommands = new[] {'R', 'F', 'F', 'F', 'F' };
 
-            Grid.Obstacles.Add(obstacle);
+            Grid.ObstacleLocations.Add(obstacle);
 
             //Act
             roverController.MoveRover(moveCommands);

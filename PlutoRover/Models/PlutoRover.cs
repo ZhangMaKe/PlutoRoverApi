@@ -13,16 +13,25 @@ namespace PlutoRover.Models
         {
             foreach (var moveCommand in moveCommands)
             {
-                MoveOnce(moveCommand);
+                if (!MoveOnce(moveCommand))
+                {
+                    return;
+                }
+                
             }
         }
 
-        public void MoveOnce(char moveCommand)
+        public bool MoveOnce(char moveCommand)
         {
             switch (moveCommand)
             {
                 case 'F':
                 case 'B':
+                    var nextLocation = GetNextLocation(moveCommand);
+                    if (Grid.ObstacleLocations.Any(o => o.XLocation == nextLocation.X && o.YLocation == nextLocation.Y))
+                    {
+                        return false;
+                    }
                     MoveRover(moveCommand);
                     break;
 
@@ -34,6 +43,33 @@ namespace PlutoRover.Models
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            return true;
+        }
+
+        private RoverLocation GetNextLocation(char moveCommand)
+        {
+            var nextLocation = new RoverLocation(CurrentLocation.X, CurrentLocation.Y, CurrentLocation.Direction);
+            switch (CurrentLocation.Direction)
+            {
+                case 'N':
+                    nextLocation.Y = moveCommand == 'F' ? CurrentLocation.Y + 1 : CurrentLocation.Y - 1;
+                    break;
+
+                case 'S':
+                    nextLocation.Y = moveCommand == 'F' ? CurrentLocation.Y - 1 : CurrentLocation.Y + 1;
+                    break;
+
+                case 'E':
+                    nextLocation.X = moveCommand == 'F' ? CurrentLocation.X + 1 : CurrentLocation.X - 1;
+                    break;
+
+                case 'W':
+                    nextLocation.X = moveCommand == 'F' ? CurrentLocation.X - 1 : CurrentLocation.X + 1;
+                    break;
+            }
+
+            return nextLocation;
         }
 
         private void MoveRover(char moveCommand)
@@ -56,7 +92,7 @@ namespace PlutoRover.Models
                         break;
                 }
             }
-            else if(moveCommand == 'B')
+            else if (moveCommand == 'B')
             {
                 switch (CurrentLocation.Direction)
                 {
@@ -142,7 +178,7 @@ namespace PlutoRover.Models
             {
                 throw new ArgumentOutOfRangeException("Turn Rover cannot move in direction of " + moveCommand);
             }
-            
+
         }
     }
 }

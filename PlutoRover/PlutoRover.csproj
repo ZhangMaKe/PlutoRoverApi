@@ -190,6 +190,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IPlutoRover.cs" />
+    <Compile Include="Models\Grid.cs" />
+    <Compile Include="Models\ObstacleLocation.cs" />
     <Compile Include="Models\PlutoRover.cs" />
     <Compile Include="Models\RoverLocation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

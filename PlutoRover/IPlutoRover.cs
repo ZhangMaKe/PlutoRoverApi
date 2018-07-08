@@ -11,6 +11,6 @@ namespace PlutoRover
     {
         RoverLocation CurrentLocation { get; set; }
         void Move(char[] moveCommands);
-        void MoveOnce(char moveCommand);
+        bool MoveOnce(char moveCommand);
     }
 }
