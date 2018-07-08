@@ -161,8 +161,103 @@ namespace PlutoRover.Tests.Controllers
             Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
         }
 
+        [TestMethod]
+        public void MoveOneSpaceNorthAtTopOfGrid_LocationAfterMoveIsAtBottomOfGrid()
+        {
+            //Arrange
+            var rover = new Models.PlutoRover();
 
+            var roverController = new PlutoRoverController(rover);
 
+            var moveCommands = new char[51];
+            for (int i = 0; i < 51; i++)
+            {
+                moveCommands[i] = 'F';
+            }
+
+            //Act
+            roverController.MoveRover(moveCommands);
+
+            //Assert
+            var expectedPosition = new RoverLocation(0, -50, 'N');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
+        }
+
+        [TestMethod]
+        public void MoveOneSpaceSouthABottomOfGrid_LocationAfterMoveIsAtTopOfGrid()
+        {
+            //Arrange
+            var rover = new Models.PlutoRover();
+
+            var roverController = new PlutoRoverController(rover);
+
+            var moveCommands = new char[51];
+            for (int i = 0; i < 51; i++)
+            {
+                moveCommands[i] = 'B';
+            }
+
+            //Act
+            roverController.MoveRover(moveCommands);
+
+            //Assert
+            var expectedPosition = new RoverLocation(0, 50, 'N');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
+        }
+
+        [TestMethod]
+        public void MoveOneSpaceEastAtRightOfGrid_LocationAfterMoveIsAtLeftOfGrid()
+        {
+            //Arrange
+            var rover = new Models.PlutoRover();
+
+            var roverController = new PlutoRoverController(rover);
+
+            var moveCommands = new char[52];
+            moveCommands[0] = 'R';
+            for (int i = 1; i < 52; i++)
+            {
+                moveCommands[i] = 'F';
+            }
+
+            //Act
+            roverController.MoveRover(moveCommands);
+
+            //Assert
+            var expectedPosition = new RoverLocation(-50, 0, 'E');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
+        }
+
+        [TestMethod]
+        public void MoveOneSpaceWestAtLeftOfGrid_LocationAfterMoveIsAtRightOfGrid()
+        {
+            //Arrange
+            var rover = new Models.PlutoRover();
+
+            var roverController = new PlutoRoverController(rover);
+
+            var moveCommands = new char[52];
+            moveCommands[0] = 'L';
+            for (int i = 1; i < 52; i++)
+            {
+                moveCommands[i] = 'F';
+            }
+
+            //Act
+            roverController.MoveRover(moveCommands);
+
+            //Assert
+            var expectedPosition = new RoverLocation(50, 0, 'W');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
+        }
 
     }
 }
