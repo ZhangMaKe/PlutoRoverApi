@@ -259,5 +259,28 @@ namespace PlutoRover.Tests.Controllers
             Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
         }
 
+        [TestMethod]
+        public void ObstacleInPathOfRover_RoverStopsMovingAtObstacle()
+        {
+            //Arrange
+            var rover = new Models.PlutoRover();
+
+            var roverController = new PlutoRoverController(rover);
+
+            var obstacle = new Obstacle(new Tuple<int, int>(3, 0));
+
+            var moveCommands = new[] {'R', 'F', 'F', 'F', 'F' };
+
+            Grid.Obstacles.Add(obstacle);
+
+            //Act
+            roverController.MoveRover(moveCommands);
+
+            //Assert
+            var expectedPosition = new RoverLocation(2, 0, 'E');
+            Assert.AreEqual(expectedPosition.X, rover.CurrentLocation.X);
+            Assert.AreEqual(expectedPosition.Y, rover.CurrentLocation.Y);
+            Assert.AreEqual(expectedPosition.Direction, rover.CurrentLocation.Direction);
+        }
     }
 }
