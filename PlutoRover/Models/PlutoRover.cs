@@ -43,16 +43,16 @@ namespace PlutoRover.Models
                 switch (CurrentLocation.Direction)
                 {
                     case 'N':
-                        CurrentLocation.Y++;
+                        MoveNorth();
                         break;
                     case 'S':
-                        CurrentLocation.Y--;
+                        MoveSouth();
                         break;
                     case 'E':
-                        CurrentLocation.X++;
+                        MoveEast();
                         break;
                     case 'W':
-                        CurrentLocation.X--;
+                        MoveWest();
                         break;
                 }
             }
@@ -61,16 +61,16 @@ namespace PlutoRover.Models
                 switch (CurrentLocation.Direction)
                 {
                     case 'N':
-                        CurrentLocation.Y--;
+                        MoveSouth();
                         break;
                     case 'S':
-                        CurrentLocation.Y++;
+                        MoveNorth();
                         break;
                     case 'E':
-                        CurrentLocation.X--;
+                        MoveWest();
                         break;
                     case 'W':
-                        CurrentLocation.X++;
+                        MoveEast();
                         break;
                 }
             }
@@ -78,6 +78,26 @@ namespace PlutoRover.Models
             {
                 throw new ArgumentOutOfRangeException("Move Rover cannot move in direction of " + moveCommand);
             }
+        }
+
+        private void MoveEast()
+        {
+            CurrentLocation.X = CurrentLocation.X == 50 ? -50 : CurrentLocation.X + 1;
+        }
+
+        private void MoveWest()
+        {
+            CurrentLocation.X = CurrentLocation.X == -50 ? 50 : CurrentLocation.X - 1;
+        }
+
+        private void MoveNorth()
+        {
+            CurrentLocation.Y = CurrentLocation.Y == 50 ? -50 : CurrentLocation.Y + 1;
+        }
+
+        private void MoveSouth()
+        {
+            CurrentLocation.Y = CurrentLocation.Y == -50 ? 50 : CurrentLocation.Y - 1;
         }
 
         private void TurnRover(char moveCommand)
